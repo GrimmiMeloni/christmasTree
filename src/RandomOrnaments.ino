@@ -24,6 +24,7 @@
 #define BUTTON2 8 //first button
 
 long time_ref;  // Used as a time reference
+int ornamentCycleIdx = 0;
 
 // Creates a christmasTree instance with the DOUT pin as an argument
 christmasTree ornament(PIN);
@@ -41,7 +42,7 @@ void setup()
     
     // Selects which ornaments to appear
     // Available choices: SNOW_BACK, SNOW_FRONT, TREE, GIFT, CHILD, HOUSE, SPACE_INVADER, RANDOM, CANDY
-    ornament.setOrnaments(SNOW_BACK + SPACE_INVADER);  
+    ornament.setOrnaments(SNOW_BACK + TREE);  
     
     time_ref = millis();  // Gets the temporal baseline
 }
@@ -66,8 +67,16 @@ void loop()
     int button1 = digitalRead(BUTTON1);
     int button2 = digitalRead(BUTTON2);
 
-    if (button1 == LOW)
-        Serial.println("Button1 pressed");
+    if (button1 == LOW){
+        Serial.print("Button1 pressed at ");
+        Serial.println(millis());
+        uint8_t new_ornament = 0x02 << ( ornamentCycleIdx % 8 );
+        ornamentCycleIdx++;
+
+        ornament.setOrnaments(SNOW_BACK + new_ornament);  // Sets the new ornament
+        time_ref = millis();
+    }
+
 
     if (button2 == LOW)
         Serial.println("Button2 pressed");

@@ -23,7 +23,7 @@
 christmasTree::christmasTree(uint8_t pin)
 {
     matrix = new Adafruit_NeoMatrix(8, 8, pin,
-                                    NEO_MATRIX_TOP     + NEO_MATRIX_LEFT +
+                                    NEO_MATRIX_BOTTOM  + NEO_MATRIX_RIGHT +
                                     NEO_MATRIX_COLUMNS + NEO_MATRIX_PROGRESSIVE,
                                     NEO_GRB            + NEO_KHZ800);
 
@@ -60,7 +60,7 @@ void christmasTree::refresh()
 
     uint16_t ornament = 0x01;
     boolean on = _ornaments & ornament;
-    for (uint8_t i = 0; i < 8; ++i)
+    for (uint8_t i = 0; i < 9; ++i)
     {
         switch (ornament)
         {
@@ -257,14 +257,14 @@ void christmasTree::drawRainbow() {
 
 
 uint32_t ledarray[] = {
-                       0x00FFFFFF, 0x0000FFFF, 0x00000000, 0x00FFFFFF, 0x00FFFFFF, 0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 
+                       0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 0x00FFFFFF, 0x00FFFFFF, 0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 
                        0x0000FFFF, 0x0000FFFF, 0x00FFFFFF, 0x0080FFFF, 0x0080FFFF, 0x00FFFFFF, 0x0000FFFF, 0x0000FFFF, 
-                       0x00000000, 0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 0x00FFFFFF, 0x0000FFFF, 0x00000000, 0x00FFFFFF, 
+                       0x00FFFFFF, 0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 0x00FFFFFF, 
                        0x00FFFFFF, 0x0080FFFF, 0x00FFFFFF, 0x0000FFFF, 0x0000FFFF, 0x00FFFFFF, 0x0080FFFF, 0x00FFFFFF, 
                        0x00FFFFFF, 0x0080FFFF, 0x00FFFFFF, 0x0000FFFF, 0x0000FFFF, 0x00FFFFFF, 0x0080FFFF, 0x00FFFFFF, 
-                       0x00FFFFFF, 0x00000000, 0x0000FFFF, 0x00FFFFFF, 0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 0x00FFFFFF, 
+                       0x00FFFFFF, 0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 0x00FFFFFF, 
                        0x0000FFFF, 0x0000FFFF, 0x00FFFFFF, 0x0080FFFF, 0x0080FFFF, 0x00FFFFFF, 0x0000FFFF, 0x0000FFFF, 
-                       0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 0x00FFFFFF, 0x00FFFFFF, 0x00000000, 0x0000FFFF, 0x00FFFFFF, 
+                       0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 0x00FFFFFF, 0x00FFFFFF, 0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 
                        };
 
   for (int t = 0; t < 64; t++)
