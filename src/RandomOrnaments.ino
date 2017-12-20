@@ -53,7 +53,7 @@ void loop()
     {
         // Picks an ornament at random.
         // It's a bit esoteric, but basically setting a bit in a byte enables a specific ornament
-        uint8_t new_ornament = 0x02 << ( rand() % 7 );
+        uint8_t new_ornament = 0x02 << ( rand() % 8 );
 
         ornament.setOrnaments(SNOW_BACK + new_ornament);  // Sets the new ornament
         time_ref = millis();
@@ -63,7 +63,7 @@ void loop()
     // Any change basically involves scrolling the snowflakes down (if enabled)
     ornament.refresh();
     
-    digitalWrite(LED_BUILTIN, HIGH);
+    //digitalWrite(LED_BUILTIN, HIGH);
     int button1 = digitalRead(BUTTON1);
     int button2 = digitalRead(BUTTON2);
 
@@ -82,6 +82,6 @@ void loop()
         Serial.println("Button2 pressed");
 
     delay(300);
-    digitalWrite(LED_BUILTIN, LOW);
+    //digitalWrite(LED_BUILTIN, LOW);
     delay(300);
 }

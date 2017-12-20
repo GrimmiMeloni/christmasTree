@@ -60,7 +60,7 @@ void christmasTree::refresh()
 
     uint16_t ornament = 0x01;
     boolean on = _ornaments & ornament;
-    for (uint8_t i = 0; i < 9; ++i)
+    for (uint8_t i = 0; i < 10; ++i)
     {
         switch (ornament)
         {
