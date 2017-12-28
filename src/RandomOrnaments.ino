@@ -42,7 +42,7 @@ void setup()
     
     // Selects which ornaments to appear
     // Available choices: SNOW_BACK, SNOW_FRONT, TREE, GIFT, CHILD, HOUSE, SPACE_INVADER, RANDOM, CANDY
-    ornament.setOrnaments(SNOW_FRONT + SPACE_INVADER);  
+    ornament.setOrnaments(SNOW_BACK + TREE);  
     
     time_ref = millis();  // Gets the temporal baseline
 }
