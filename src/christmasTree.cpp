@@ -80,7 +80,9 @@ void christmasTree::refresh()
                 if ( on ) drawHouse();
                 break;
             case 0x20:
-                if ( on ) drawRainbow();
+                if ( on ) {
+                    drawRainbow();
+                }
                 break;
             case 0x40:
                 if ( on ) drawRandom();
@@ -257,19 +259,21 @@ void christmasTree::drawRainbow() {
 
 
 uint32_t ledarray[] = {
-                       0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 0x00FFFFFF, 0x00FFFFFF, 0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 
-                       0x0000FFFF, 0x0000FFFF, 0x00FFFFFF, 0x0080FFFF, 0x0080FFFF, 0x00FFFFFF, 0x0000FFFF, 0x0000FFFF, 
-                       0x00FFFFFF, 0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 0x00FFFFFF, 
-                       0x00FFFFFF, 0x0080FFFF, 0x00FFFFFF, 0x0000FFFF, 0x0000FFFF, 0x00FFFFFF, 0x0080FFFF, 0x00FFFFFF, 
-                       0x00FFFFFF, 0x0080FFFF, 0x00FFFFFF, 0x0000FFFF, 0x0000FFFF, 0x00FFFFFF, 0x0080FFFF, 0x00FFFFFF, 
-                       0x00FFFFFF, 0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 0x00FFFFFF, 
-                       0x0000FFFF, 0x0000FFFF, 0x00FFFFFF, 0x0080FFFF, 0x0080FFFF, 0x00FFFFFF, 0x0000FFFF, 0x0000FFFF, 
-                       0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 0x00FFFFFF, 0x00FFFFFF, 0x00FFFFFF, 0x0000FFFF, 0x00FFFFFF, 
+                       0x00000000, 0x0000FFFF, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x0000FFFF, 0x00000000, 
+                       0x0000FFFF, 0x0000FFFF, 0x00000000, 0x0080FFFF, 0x0080FFFF, 0x00000000, 0x0000FFFF, 0x0000FFFF, 
+                       0x00000000, 0x00000000, 0x0000FFFF, 0x00000000, 0x00000000, 0x0000FFFF, 0x00000000, 0x00000000, 
+                       0x00000000, 0x0080FFFF, 0x00000000, 0x0000FFFF, 0x0000FFFF, 0x00000000, 0x0080FFFF, 0x00000000, 
+                       0x00000000, 0x0080FFFF, 0x00000000, 0x0000FFFF, 0x0000FFFF, 0x00000000, 0x0080FFFF, 0x00000000, 
+                       0x00000000, 0x00000000, 0x0000FFFF, 0x00000000, 0x00000000, 0x0000FFFF, 0x00000000, 0x00000000, 
+                       0x0000FFFF, 0x0000FFFF, 0x00000000, 0x0080FFFF, 0x0080FFFF, 0x00000000, 0x0000FFFF, 0x0000FFFF, 
+                       0x00000000, 0x0000FFFF, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x0000FFFF, 0x00000000, 
                        };
 
   for (int t = 0; t < 64; t++)
   {
-    matrix->setPixelColor(t, ledarray[t]); 
+    if (ledarray[t] == 0) continue;
+    //matrix->drawPixel(t/8, t%8, matrix->Color(ledarray[t] & 0x00FF0000, ledarray[t] & 0x0000FF00, ledarray[t] & 0x000000FF)); 
+    matrix->setPixelColor(t, ledarray[t]);
   }
 }
 

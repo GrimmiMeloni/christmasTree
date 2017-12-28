@@ -42,7 +42,7 @@ void setup()
     
     // Selects which ornaments to appear
     // Available choices: SNOW_BACK, SNOW_FRONT, TREE, GIFT, CHILD, HOUSE, SPACE_INVADER, RANDOM, CANDY
-    ornament.setOrnaments(SNOW_BACK + TREE);  
+    ornament.setOrnaments(SNOW_FRONT + SPACE_INVADER);  
     
     time_ref = millis();  // Gets the temporal baseline
 }
@@ -55,7 +55,11 @@ void loop()
         // It's a bit esoteric, but basically setting a bit in a byte enables a specific ornament
         uint8_t new_ornament = 0x02 << ( rand() % 8 );
 
-        ornament.setOrnaments(SNOW_BACK + new_ornament);  // Sets the new ornament
+        if (new_ornament == SPACE_INVADER) {
+            ornament.setOrnaments(SNOW_FRONT + new_ornament);  // Sets the new ornament
+        } else {
+            ornament.setOrnaments(SNOW_BACK + new_ornament);  // Sets the new ornament
+        }
         time_ref = millis();
     }
     
@@ -73,7 +77,11 @@ void loop()
         uint8_t new_ornament = 0x02 << ( ornamentCycleIdx % 8 );
         ornamentCycleIdx++;
 
-        ornament.setOrnaments(SNOW_BACK + new_ornament);  // Sets the new ornament
+        if (new_ornament == SPACE_INVADER) {
+            ornament.setOrnaments(SNOW_FRONT + new_ornament);  // Sets the new ornament
+        } else {
+            ornament.setOrnaments(SNOW_BACK + new_ornament);  // Sets the new ornament
+        }
         time_ref = millis();
     }
 
