@@ -54,6 +54,7 @@ private:
     void drawGift();
     void drawChild();
     void drawHouse();
+    void drawIceCrystal();
     void drawSpaceInvader();
     void drawRandom();
     void drawCandy();

@@ -80,9 +80,7 @@ void christmasTree::refresh()
                 if ( on ) drawHouse();
                 break;
             case 0x20:
-                if ( on ) {
-                    drawRainbow();
-                }
+                if ( on ) drawIceCrystal();
                 break;
             case 0x40:
                 if ( on ) drawRandom();
@@ -93,6 +91,13 @@ void christmasTree::refresh()
             case 0x100:
                 if ( on ) dropSnow();
                 break;
+                /* never reachable due to only 10 bitshifts - see for loop above
+                raise this to 11 to also include this one
+
+            case 0x200:
+                if ( on ) drawRainbow();
+                break;
+                */
         }
 
         ornament <<= 1;
@@ -242,7 +247,8 @@ void christmasTree::drawCandy()
 void christmasTree::drawRainbow() {
 
             // Diangonal Rainbow Scroll
-            /*
+        for (int j=0; j<6; j++) {
+
         for(int i=-1;i<=8;i++){
             for(int n=-18; n<=6; n+=6){
                 matrix->drawLine(n+i,0,n+i+7,7, matrix->Color(255,0,0));
@@ -252,12 +258,13 @@ void christmasTree::drawRainbow() {
                 matrix->drawLine(n+i+4,0,n+i+11,7, matrix->Color(0,0,255));
                 matrix->drawLine(n+i+5,0,n+i+12,7, matrix->Color(255,0,255));
             }
-            matrix->write();
+            matrix->show();
             delay(200);
-           }
-*/
+        }
+        }
+}
 
-
+void christmasTree::drawIceCrystal() {
 uint32_t ledarray[] = {
                        0x00000000, 0x0000FFFF, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x0000FFFF, 0x00000000, 
                        0x0000FFFF, 0x0000FFFF, 0x00000000, 0x0080FFFF, 0x0080FFFF, 0x00000000, 0x0000FFFF, 0x0000FFFF, 
